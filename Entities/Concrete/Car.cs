@@ -5,7 +5,7 @@ using Entities.Abstract;
 
 namespace Entities.Concrete
 {
-    public class Car:IEntitiy
+    public class Car:IEntity
     {
         public int Id { get; set; }
         public int BrandId { get; set; }
