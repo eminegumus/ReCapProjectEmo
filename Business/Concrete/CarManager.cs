@@ -4,6 +4,7 @@ using System.Text;
 using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace Business.Concrete
@@ -42,6 +43,11 @@ namespace Business.Concrete
             {
                 Console.WriteLine("Araba eklenemedi. Araba ismi en az 2 karakter ve günlük fiyatı sıfırdan farklı olmalıdır.");
             }
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+           return _carDal.GetCarDetails();
         }
     }
 }
