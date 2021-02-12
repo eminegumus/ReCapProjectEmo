@@ -21,7 +21,7 @@ namespace ConsoleUI
             //GetCarsByColorId(carManager);
             //carManager.Delete(carManager.Get(1005));
             //carUpdated(carManager);
-            //GetCars(carManager);
+            GetCars(carManager);
 
             //Brand CRUD Test
             //AddedBrand(brandManager);
@@ -49,13 +49,13 @@ namespace ConsoleUI
         private static void UpdatedColor(ColorManager colorManager)
         {
             var updatedColor = colorManager.Get(5);
-            updatedColor.Name = "Kırmızı";
-            colorManager.Update(updatedColor);
+            updatedColor.Data.Name = "Kırmızı";
+            colorManager.Update(updatedColor.Data);
         }
 
         private static void GetAllBrand(BrandManager brandManager)
         {
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine("{0} / {1}", brand.Id, brand.Name);
             }
@@ -64,13 +64,13 @@ namespace ConsoleUI
         private static void UpdatedBrand(BrandManager brandManager)
         {
             var updatedBrand = brandManager.GetById(8);
-            updatedBrand.Name = "Skoda";
-            brandManager.Update(updatedBrand);
+            updatedBrand.Data.Name = "Skoda";
+            brandManager.Update(updatedBrand.Data);
         }
 
         private static void DeletedBrand(BrandManager brandManager)
         {
-            brandManager.Delete(brandManager.GetById(6));
+            brandManager.Delete(brandManager.GetById(6).Data);
         }
 
         private static void AddedBrand(BrandManager brandManager)
@@ -82,19 +82,19 @@ namespace ConsoleUI
         private static void carUpdated(CarManager carManager)
         {
             var updatedCar = carManager.Get(1004);
-            updatedCar.Description = "BMW";
-            updatedCar.BrandId = 1;
-            updatedCar.ColorId = 1;
-            updatedCar.ModelYear = 2021;
-            updatedCar.DailyPrice = 2000;
-            carManager.Update(updatedCar);
+            updatedCar.Data.Description = "BMW";
+            updatedCar.Data.BrandId = 1;
+            updatedCar.Data.ColorId = 1;
+            updatedCar.Data.ModelYear = 2021;
+            updatedCar.Data.DailyPrice = 2000;
+            carManager.Update(updatedCar.Data);
             Console.WriteLine("Güncelleme işlemi tamamlandı.");
         }
 
         private static void GetCarsByColorId(CarManager carManager)
         {
             var GetCarsByColorId = carManager.GetCarsByColorId(1);
-            foreach (var car in GetCarsByColorId)
+            foreach (var car in GetCarsByColorId.Data)
             {
                 Console.WriteLine(car.Description);
             }
@@ -103,7 +103,7 @@ namespace ConsoleUI
         private static void GetCarsByBrandId(CarManager carManager)
         {
             var carGetCarsByBrandId = carManager.GetCarsByBrandId(1);
-            foreach (var car in carGetCarsByBrandId)
+            foreach (var car in carGetCarsByBrandId.Data)
             {
                 Console.WriteLine(car.Id + '/' + car.Description);
             }
@@ -112,7 +112,7 @@ namespace ConsoleUI
         private static void GetCars(CarManager carManager)
         {
             var cars = carManager.GetCars();
-            foreach (var car in cars)
+            foreach (var car in cars.Data)
             {
                 Console.WriteLine(car.Description);
             }
