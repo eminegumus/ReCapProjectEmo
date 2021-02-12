@@ -14,14 +14,20 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
+            CustomerManager customerManager=new CustomerManager(new EfCustomerDal(),new EfUserDal());
+            UserManager userManager=new UserManager(new EfUserDal());
+            RentalManager rentalManager=new RentalManager(new EfRentalDal());
+            //CustomerEkleme
+           // UserCustomerAddedTest(userManager, customerManager);
 
+           // RentalAddedTest(rentalManager);
             //Car CRUD Test
             //carManager.Add(new Car(){BrandId = 1,ColorId = 1,DailyPrice =1000,Description = "Mercedes",ModelYear = 2015});
             //GetCarsByBrandId(carManager);
             //GetCarsByColorId(carManager);
             //carManager.Delete(carManager.Get(1005));
             //carUpdated(carManager);
-            GetCars(carManager);
+            //GetCars(carManager);
 
             //Brand CRUD Test
             //AddedBrand(brandManager);
@@ -44,6 +50,32 @@ namespace ConsoleUI
             //{
             //    Console.WriteLine("{0} / {1} / {2} / {3}", car.CarName, car.BrandName, car.ColorName, car.DailyPrice);
             //}
+        }
+
+        private static void RentalAddedTest(RentalManager rentalManager)
+        {
+            rentalManager.Add(new Rental()
+            {
+                CarId = 1004, CustomerId = 3, ReturnDate = new DateTime(2021, 02, 10),
+                RentDate = new DateTime(2021, 02, 09)
+            });
+
+            foreach (var rental in rentalManager.GetRentals().Data)
+            {
+                Console.WriteLine(rental.ReturnDate);
+            }
+        }
+
+        private static void UserCustomerAddedTest(UserManager userManager, CustomerManager customerManager)
+        {
+            userManager.Add(new User()
+                {Email = "abc@gmail.com", FirstName = "Emine", LastName = "Gümüş", Password = "123"});
+            customerManager.Add(new Customer() {CompanyName = "Kodlama.io", UserId = 1});
+            customerManager.GetCustomers();
+            foreach (var customer in customerManager.GetCustomers().Data)
+            {
+                Console.WriteLine(customer.CompanyName);
+            }
         }
 
         private static void UpdatedColor(ColorManager colorManager)
