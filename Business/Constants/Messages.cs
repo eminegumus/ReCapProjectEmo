@@ -12,5 +12,6 @@ namespace Business.Constants
         public static string CustomerAdded= "Müşteri başarıyla eklendi.";
         public static string InvalidUser = "Önce kullanıcı girişi yapmalısınız!";
         public static string UndeliveredCar = "Araba henüz teslim edilmediğinden kiralama işlemi gerçekleştirilememektedir.";
+        public static string CarImageLimitExceeded = "En fazla 5 resim ekleyebilirsiniz!";
     }
 }
