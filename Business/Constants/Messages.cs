@@ -13,5 +13,13 @@ namespace Business.Constants
         public static string InvalidUser = "Önce kullanıcı girişi yapmalısınız!";
         public static string UndeliveredCar = "Araba henüz teslim edilmediğinden kiralama işlemi gerçekleştirilememektedir.";
         public static string CarImageLimitExceeded = "En fazla 5 resim ekleyebilirsiniz!";
+        public static string AuthorizationDenied = "Yetkiniz Bulunmamaktadır.";
+        public static string UserRegistered = "Kullanıcı Kayıtlı";
+        public static string UserNotFound = "Kullanıcı Bulunamadı";
+        public static string PasswordError = "Parola Hatalı";
+        public static string SuccessfulLogin = "Başarılı giriş.";
+
+        public static string UserAlreadyExists = "Kullanıcı daha önce oluşturulmuş.";
+        public static string AccessTokenCreated = "AccessToken oluşturuldu.";
     }
 }

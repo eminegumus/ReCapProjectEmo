@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Channels;
 using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -69,7 +70,7 @@ namespace ConsoleUI
         private static void UserCustomerAddedTest(UserManager userManager, CustomerManager customerManager)
         {
             userManager.Add(new User()
-                {Email = "abc@gmail.com", FirstName = "Emine", LastName = "Gümüş", Password = "123"});
+                {Email = "abc@gmail.com", FirstName = "Emine", LastName = "Gümüş"});
             customerManager.Add(new Customer() {CompanyName = "Kodlama.io", UserId = 1});
             customerManager.GetCustomers();
             foreach (var customer in customerManager.GetCustomers().Data)
